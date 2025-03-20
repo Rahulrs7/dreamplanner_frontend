@@ -51,28 +51,6 @@ const Navbar = ({ setShowLogin }) => {
         <a href='#footer' onClick={() => setMenu("contact")} className={`${menu === "contact" ? "active" : ""}`}>contact us</a>
       </ul>
       <div className="navbar-right">
-        <div className="search-container">
-          <img src={assets.search_icon} alt="Search" onClick={handleSearchClick} className="search-icon" />
-          {showSearch && (
-            <div className="search-box">
-              <input
-                type="text"
-                placeholder="Search for food..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-              {suggestions.length > 0 && (
-                <ul className="suggestions">
-                  {suggestions.map((suggestion, index) => (
-                    <li key={index} onClick={() => handleSuggestionClick(suggestion)}>
-                      {suggestion}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          )}
-        </div>
         
         {!token ? (
           <button onClick={() => setShowLogin(true)}>sign in</button>
@@ -80,8 +58,6 @@ const Navbar = ({ setShowLogin }) => {
           <div className='navbar-profile'>
             <img src={assets.profile_icon} alt="Profile" />
             <ul className='navbar-profile-dropdown'>
-              <li onClick={() => navigate('/myorders')}> <img src={assets.bag_icon} alt="Orders" /> <p>Orders</p></li>
-              <hr />
               <li onClick={logout}> <img src={assets.logout_icon} alt="Logout" /> <p>Logout</p></li> 
             </ul>
           </div>
